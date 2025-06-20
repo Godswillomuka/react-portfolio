@@ -1,15 +1,20 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 function About() {
-    return (
-        <section id="about" className="about-section">
-            <h2>About Me</h2>
-            <p>
-                I am a web developer with a passion for creating dynamic and responsive web applications. 
-                With a background in computer science, I have honed my skills in HTML, CSS, JavaScript, and various frameworks.
-            </p>
-        </section>
-    );
+  return (
+    <motion.section
+      id="about"
+      className="about-section"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      <h2>About Me</h2>
+      <p>I’m a passionate developer building awesome things with React!</p>
+    </motion.section>
+  );
 }
 
 export default About;
