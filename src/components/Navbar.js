@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Navbar() {
-    return (
-        <nav className="navbar">
-            <h1 className="navbar-logo">MyPortofolio</h1>
-            <ul className="navbar-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+  const [isOpen, setIsOpen] = useState(false);
 
-        </nav>
-    );
-    }
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  return (
+    <nav className="navbar">
+      <h1 className="navbar-logo">MyPortfolio</h1>
+
+      <div className={`navbar-toggle ${isOpen ? "open" : ""}`} onClick={toggleMenu}>
+        <span className="bar"></span>
+        <span className="bar"></span>
+        <span className="bar"></span>
+      </div>
+
+      <ul className={`navbar-links ${isOpen ? "active" : ""}`}>
+        <li><a href="#home" onClick={() => setIsOpen(false)}>Home</a></li>
+        <li><a href="#about" onClick={() => setIsOpen(false)}>About</a></li>
+        <li><a href="#projects" onClick={() => setIsOpen(false)}>Projects</a></li>
+        <li><a href="#contact" onClick={() => setIsOpen(false)}>Contact</a></li>
+      </ul>
+    </nav>
+  );
+}
 
 export default Navbar;
